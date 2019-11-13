@@ -1,0 +1,4 @@
+# config for running app via pm2 (pm2 start app.yaml)
+apps:
+  - script: ./app.js
+    name: 'app'

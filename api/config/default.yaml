@@ -1,0 +1,7 @@
+port: 3000
+dbConfig:
+  host: mysql
+  user: root
+  password: bees_knees
+  database: guardrails
+  charset: utf8mb4
