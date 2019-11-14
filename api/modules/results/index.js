@@ -10,6 +10,6 @@ module.exports.init = app => {
   );
 
   app.post("/api/result", (req, res) =>
-    Results.create(req.body).then(insertId => Results.getOne(insertId))
+    Results.create(req.body).then(result => res.send(result))
   );
 };

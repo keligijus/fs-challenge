@@ -1,21 +1,25 @@
 const Promise = require("bluebird");
-const exampleFindings = require("./example-findings");
+// const exampleFindings = require("./example-findings");
+const db = require("../../db");
 
 module.exports = {
   getAll() {
-    return Promise.resolve([
-      {
-        findings: exampleFindings.findings
-      }
-    ]);
+    const query = `SELECT * FROM results`;
+
+    return db.pool.queryAsync(query);
   },
   getOne(id) {
-    console.log(id);
-    return Promise.resolve({
-      findings: exampleFindings.findings
-    });
+    const query = `SELECT * FROM results WHERE id = ?`;
+    const values = [id];
+
+    return db.pool.queryAsync(query, values);
   },
   create(input) {
-    return Promise.resolve("id");
+    const query = `INSERT INTO results SET ?`;
+    const value = input;
+
+    return db.pool
+      .queryAsync(query, value)
+      .then(result => this.getOne(result.insertId));
   }
 };
