@@ -4,10 +4,12 @@ const config = require("config");
 const port = config.get("port");
 const bodyParser = require("body-parser");
 const path = require("path");
+const cors = require("cors");
 
 const results = require("./modules/results");
 
 app.use(bodyParser.json()); // support json encoded bodies
+app.use(cors()); // allow all connections in dev
 results.init(app);
 
 // catch all other GETs and send them the client app bundle!

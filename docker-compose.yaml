@@ -1,6 +1,13 @@
 version: '3.2'
 
 services:
+  dashboard:
+    build:
+      context: ./dashboard
+    volumes:
+      - ./dashboard:/var/dashboard
+    ports:
+      - "3030:3030"
   api:
     build:
       context: ./api
